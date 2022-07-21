@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,'/var/www/FlaskApp/flask-app-p')
+sys.path.insert(0,'/var/www/flask-app-p')
 
 activation = '/home/semestral/.local/share/virtualenvs/flask-app-p-voUfBLEy/bin/activation.py'
 with open(activation) as file:
