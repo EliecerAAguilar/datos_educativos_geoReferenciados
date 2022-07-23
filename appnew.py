@@ -3,7 +3,6 @@ import dash_bootstrap_components as dbc
 import plotly.express as px
 import psycopg2
 import pandas as pd
-import json 
 
 
 
@@ -29,10 +28,10 @@ app.layout = html.Div(
 
         html.Div(children=[
             html.Label('Area'),
-            dcc.Dropdown(['URBANA', 'RURAL', 'INDIGENA'], 'RURAL' ,  id='area'),
+            dcc.Dropdown(['URBANA', 'RURAL', 'INDÍGENA'], 'RURAL' , id='area'),
             html.Div(className='spacer'),
             html.Label('Oferta Academica'),
-            dcc.Dropdown(['PRIMARIA TELEBÁSICA', 'PRIMARIA MULTIGRADO', 'PRIMARIA UNIGRADO', 'PRIMARIA TELEBASICA'], 'PRIMARIA MULTIGRADO', id='oferta' )
+            dcc.Dropdown(['PRIMARIA MULTIGRADO', 'PRIMARIA UNIGRADO', 'PRIMARIA TELEBASICA'], 'PRIMARIA MULTIGRADO', id='oferta' )
         ]),    
             
         
