@@ -1,13 +1,15 @@
 from re import X
 from turtle import color
 from dash import Dash, html, dcc, Input, Output
-import plotly.graph_objs as go
+import dash_bootstrap_components as dbc
 import plotly.express as px
 import psycopg2
 import pandas as pd
 import json 
 
 
+
+#Conexion a la base de Datos
 connection = psycopg2.connect(
     database = "educacion",
     user = "dashboard",
@@ -28,20 +30,21 @@ app.layout = html.Div(
             html.Div(id='my-div'),
             ]),
             
-            
-        html.Div(children=[
-            html.Label('Area'),
-            dcc.Dropdown(['URBANA', 'RURAL', 'INDIGENA'], 'URBANA' ,  id='area'),
-            html.Br(),
-            html.Label('Oferta Academica'),
-            dcc.Dropdown(['PRIMARIA TELEBÁSICA', 'PRIMARIA MULTIGRADO', 'PRIMARIA UNIGRADO', 'PRIMARIA TELEBASICA'], 'PRIMARIA UNIGRADO', id='oferta' )
-        ], style={'padding': 10, 'flex': 1, }),
-         
-        html.Div(children=[
-        
-        dcc.Graph(id='grafica-barra'), 
-        dcc.Graph(id='MapPlot') ], style={'display': 'inline' })
+        dbc.Row(
+            [
+                html.Label('Area'),
+                dbc.Col(dcc.Dropdown(['URBANA', 'RURAL', 'INDIGENA'], 'URBANA' ,  id='area')),
+                html.Label('Oferta Academica'),
+                dbc.Col(dcc.Dropdown(['PRIMARIA TELEBÁSICA', 'PRIMARIA MULTIGRADO', 'PRIMARIA UNIGRADO', 'PRIMARIA TELEBASICA'], 'PRIMARIA UNIGRADO', id='oferta' ))
+            ]
+        ),
 
+        dbc.Row(
+            [
+                dbc.Col(dcc.Graph(id='grafica-barra', style={'display': 'inline-block'})),
+                dbc.Col(dcc.Graph(id='MapPlot', style={'display': 'inline-block'}))
+            ]
+        )
     ]))
 
 
